@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class NeighboursSocializerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(NeighboursSocializerApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(NeighboursSocializerApplication.class, args);
+    }
 
 }
