@@ -9,6 +9,6 @@ public class SearchEventDto {
 
     private final double x;
     private final double y;
-    private final double radiusInKilometers;
+    private final double distanceInKilometers;
 
 }

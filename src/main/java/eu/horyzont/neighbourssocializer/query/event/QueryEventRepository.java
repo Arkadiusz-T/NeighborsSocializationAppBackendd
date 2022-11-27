@@ -1,7 +1,6 @@
 package eu.horyzont.neighbourssocializer.query.event;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.geo.Circle;
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.Metrics;
 import org.springframework.data.geo.Point;
@@ -21,9 +20,8 @@ public class QueryEventRepository {
 
     public List<EventReadModel> searchEvents(SearchEventDto searchEventDto) {
         var center = new Point(searchEventDto.getX(), searchEventDto.getY());
-        var distance = new Distance(searchEventDto.getRadiusInKilometers(), Metrics.KILOMETERS);
-        var circle = new Circle(center, distance);
-        return springQueryEventRepository.findByPositionWithin(circle);
+        var distance = new Distance(searchEventDto.getDistanceInKilometers(), Metrics.KILOMETERS);
+        return springQueryEventRepository.findByPositionNear(center, distance);
     }
 
 }
