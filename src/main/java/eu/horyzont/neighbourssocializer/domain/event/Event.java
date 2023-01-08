@@ -17,22 +17,22 @@ public class Event {
 
     private String name;
 
-    private LocalDateTime startTime;
+    private LocalDateTime dateTime;
 
-    private LocalDateTime endTime;
+    private int duration;
 
-    public Event(double[] position, String name, LocalDateTime startTime, LocalDateTime endTime) {
+    public Event(double[] position, String name, LocalDateTime dateTime, int duration) {
         this.position = position;
         this.name = name;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.dateTime = dateTime;
+        this.duration = duration;
     }
 
     public void updateFrom(Event other) {
         position = other.position;
         name = other.name;
-        startTime = other.startTime;
-        endTime = other.endTime;
+        dateTime = other.dateTime;
+        duration = other.duration;
     }
 
 }

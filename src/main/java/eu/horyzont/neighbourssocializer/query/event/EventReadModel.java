@@ -17,8 +17,8 @@ public class EventReadModel {
 
     private String name;
 
-    private LocalDateTime startTime;
+    private LocalDateTime dateTime;
 
-    private LocalDateTime endTime;
+    private int duration;
 
 }

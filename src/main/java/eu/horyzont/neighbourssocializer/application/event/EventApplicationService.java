@@ -12,8 +12,8 @@ public class EventApplicationService {
     private final EventRepository eventRepository;
 
     public String add(EventDto eventDto) {
-        var event = new Event(eventDto.getPosition(), eventDto.getName(), eventDto.getStartTime(),
-            eventDto.getEndTime());
+        var event = new Event(eventDto.getPosition(), eventDto.getName(), eventDto.getDateTime(),
+            eventDto.getDuration());
         return eventRepository.insert(event);
     }
 
@@ -22,8 +22,8 @@ public class EventApplicationService {
     }
 
     public void update(String id, EventDto eventDto) {
-        var event = new Event(eventDto.getPosition(), eventDto.getName(), eventDto.getStartTime(),
-            eventDto.getEndTime());
+        var event = new Event(eventDto.getPosition(), eventDto.getName(), eventDto.getDateTime(),
+            eventDto.getDuration());
         eventRepository.update(id, event);
     }
 

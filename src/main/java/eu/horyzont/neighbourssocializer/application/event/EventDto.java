@@ -8,6 +8,6 @@ import java.time.LocalDateTime;
 public class EventDto {
     private double[] position;
     private String name;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private LocalDateTime dateTime;
+    private int duration;
 }
