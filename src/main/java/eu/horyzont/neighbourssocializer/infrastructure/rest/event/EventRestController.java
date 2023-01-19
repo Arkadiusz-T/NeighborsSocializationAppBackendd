@@ -34,10 +34,10 @@ public class EventRestController {
     }
 
     @PostMapping
-    public ResponseEntity<String> add(@RequestBody EventDto eventDto) {
+    public ResponseEntity<EventId> add(@RequestBody EventDto eventDto) {
         String id = eventApplicationService.add(eventDto);
 
-        return new ResponseEntity<>(id, HttpStatus.CREATED);
+        return new ResponseEntity<>(new EventId(id), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
