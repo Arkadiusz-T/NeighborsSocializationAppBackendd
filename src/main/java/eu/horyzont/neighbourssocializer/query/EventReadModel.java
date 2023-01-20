@@ -1,4 +1,4 @@
-package eu.horyzont.neighbourssocializer.query.event;
+package eu.horyzont.neighbourssocializer.query;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -10,15 +10,15 @@ import java.time.LocalDateTime;
 @Document(collection = "event")
 public class EventReadModel {
 
-    @Id
-    private String id;
+  @Id
+  private String id;
 
-    private double[] position;
+  private double[] position;
 
-    private String name;
+  private String name;
 
-    private LocalDateTime dateTime;
+  private LocalDateTime dateTime;
 
-    private int duration;
+  private int duration;
 
 }
