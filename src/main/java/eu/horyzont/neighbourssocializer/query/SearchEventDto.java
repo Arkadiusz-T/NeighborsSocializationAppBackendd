@@ -7,8 +7,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SearchEventDto {
 
-  private final double x;
-  private final double y;
-  private final double distanceInKilometers;
+  private final double latitude;
+  private final double longitude;
+  private final double distanceInMeters;
 
 }

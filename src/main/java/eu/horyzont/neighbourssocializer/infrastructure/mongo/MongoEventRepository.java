@@ -19,7 +19,7 @@ public class MongoEventRepository implements EventRepository {
   @Override
   public void update(String id, Event updatedEvent) {
     Event existingEvent = repository.findById(id)
-      .orElseThrow(EventNotFoundException::new);
+        .orElseThrow(EventNotFoundException::new);
     existingEvent.updateFrom(updatedEvent);
     repository.save(existingEvent);
   }

@@ -2,6 +2,7 @@ package eu.horyzont.neighbourssocializer.domain;
 
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
@@ -13,7 +14,7 @@ public class Event {
   @Id
   private String id;
 
-  private double[] position;
+  private GeoJsonPoint position;
 
   private String name;
 
@@ -21,7 +22,7 @@ public class Event {
 
   private int duration;
 
-  public Event(double[] position, String name, LocalDateTime dateTime, int duration) {
+  public Event(GeoJsonPoint position, String name, LocalDateTime dateTime, int duration) {
     this.position = position;
     this.name = name;
     this.dateTime = dateTime;

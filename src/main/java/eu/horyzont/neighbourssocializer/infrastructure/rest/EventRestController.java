@@ -26,9 +26,9 @@ public class EventRestController {
   }
 
   @GetMapping("/search")
-  public List<EventReadModel> searchEvents(@RequestParam Double x, @RequestParam Double y,
-                                           @RequestParam Double distanceInKilometers) {
-    var searchEventDto = new SearchEventDto(x, y, distanceInKilometers);
+  public List<EventReadModel> searchEvents(@RequestParam Double latitude, @RequestParam Double longitude,
+                                           @RequestParam Double distanceInMeters) {
+    var searchEventDto = new SearchEventDto(latitude, longitude, distanceInMeters);
     return queryEventRepository.searchEvents(searchEventDto);
   }
 

@@ -19,8 +19,8 @@ public class QueryEventRepository {
   }
 
   public List<EventReadModel> searchEvents(SearchEventDto searchEventDto) {
-    var center = new Point(searchEventDto.getX(), searchEventDto.getY());
-    var distance = new Distance(searchEventDto.getDistanceInKilometers(), Metrics.KILOMETERS);
+    var center = new Point(searchEventDto.getLongitude(), searchEventDto.getLatitude());
+    var distance = new Distance(searchEventDto.getDistanceInMeters() / 1_000, Metrics.KILOMETERS);
     return springQueryEventRepository.findByPositionNear(center, distance);
   }
 
