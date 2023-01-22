@@ -3,7 +3,7 @@ package eu.horyzont.neighbourssocializer.query;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.Metrics;
-import org.springframework.data.geo.Point;
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,8 +19,20 @@ public class QueryEventRepository {
   }
 
   public List<EventReadModel> searchEvents(SearchEventDto searchEventDto) {
-    var center = new Point(searchEventDto.getLongitude(), searchEventDto.getLatitude());
+    var center = new GeoJsonPoint(searchEventDto.getLongitude(), searchEventDto.getLatitude());
     var distance = new Distance(searchEventDto.getDistanceInMeters() / 1_000, Metrics.KILOMETERS);
+    if (searchEventDto.areDatesNotEmpty() && searchEventDto.isCategoryNotEmpty()) {
+      return springQueryEventRepository.findByPositionNearAndDateTimeBetweenAndCategoryEquals(
+          center, distance, searchEventDto.getStartDate(), searchEventDto.getEndDate(), searchEventDto.getCategory());
+    }
+    if (searchEventDto.areDatesNotEmpty()) {
+      return springQueryEventRepository.findByPositionNearAndDateTimeBetween(
+          center, distance, searchEventDto.getStartDate(), searchEventDto.getEndDate());
+    }
+    if (searchEventDto.isCategoryNotEmpty()) {
+      return springQueryEventRepository.findByPositionNearAndCategoryEquals(
+          center, distance, searchEventDto.getCategory());
+    }
     return springQueryEventRepository.findByPositionNear(center, distance);
   }
 

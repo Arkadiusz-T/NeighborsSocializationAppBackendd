@@ -22,4 +22,6 @@ public class EventReadModel {
 
   private int duration;
 
+  private String category;
+
 }

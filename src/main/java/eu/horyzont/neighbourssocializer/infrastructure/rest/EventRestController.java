@@ -6,11 +6,17 @@ import eu.horyzont.neighbourssocializer.query.EventReadModel;
 import eu.horyzont.neighbourssocializer.query.QueryEventRepository;
 import eu.horyzont.neighbourssocializer.query.SearchEventDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
+
+import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE;
+import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME;
 
 @RestController
 @RequestMapping("/api/events")
@@ -26,9 +32,13 @@ public class EventRestController {
   }
 
   @GetMapping("/search")
-  public List<EventReadModel> searchEvents(@RequestParam Double latitude, @RequestParam Double longitude,
-                                           @RequestParam Double distanceInMeters) {
-    var searchEventDto = new SearchEventDto(latitude, longitude, distanceInMeters);
+  public List<EventReadModel> searchEvents(@RequestParam Double latitude,
+                                           @RequestParam Double longitude,
+                                           @RequestParam Double distanceInMeters,
+                                           @RequestParam(required = false) @DateTimeFormat(iso = DATE) LocalDate startDate,
+                                           @RequestParam(required = false) @DateTimeFormat(iso = DATE) LocalDate endDate,
+                                           @RequestParam(required = false) String category) {
+    var searchEventDto = new SearchEventDto(latitude, longitude, distanceInMeters, startDate, endDate, category);
     return queryEventRepository.searchEvents(searchEventDto);
   }
 
