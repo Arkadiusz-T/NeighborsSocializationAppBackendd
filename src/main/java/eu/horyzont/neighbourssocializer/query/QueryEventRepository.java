@@ -6,6 +6,7 @@ import org.springframework.data.geo.Metrics;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -30,10 +31,10 @@ public class QueryEventRepository {
           center, distance, searchEventDto.getStartDate(), searchEventDto.getEndDate());
     }
     if (searchEventDto.isCategoryNotEmpty()) {
-      return springQueryEventRepository.findByPositionNearAndCategoryEquals(
-          center, distance, searchEventDto.getCategory());
+      return springQueryEventRepository.findByPositionNearAndCategoryEqualsAndDateTimeAfter(
+          center, distance, searchEventDto.getCategory(), LocalDate.now());
     }
-    return springQueryEventRepository.findByPositionNear(center, distance);
+    return springQueryEventRepository.findByPositionNearAndDateTimeAfter(center, distance, LocalDate.now());
   }
 
 }
