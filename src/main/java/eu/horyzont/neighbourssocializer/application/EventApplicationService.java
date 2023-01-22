@@ -14,7 +14,8 @@ public class EventApplicationService {
 
   public String add(EventDto eventDto) {
     GeoJsonPoint position = new GeoJsonPoint(eventDto.getLongitude(), eventDto.getLatitude());
-    var event = new Event(position, eventDto.getName(), eventDto.getDateTime(), eventDto.getDuration());
+    var event = new Event(
+        position, eventDto.getName(), eventDto.getDateTime(), eventDto.getDuration(), eventDto.getCategory());
     return eventRepository.insert(event);
   }
 
@@ -24,7 +25,8 @@ public class EventApplicationService {
 
   public void update(String id, EventDto eventDto) {
     GeoJsonPoint position = new GeoJsonPoint(eventDto.getLongitude(), eventDto.getLatitude());
-    var event = new Event(position, eventDto.getName(), eventDto.getDateTime(), eventDto.getDuration());
+    var event = new Event(
+        position, eventDto.getName(), eventDto.getDateTime(), eventDto.getDuration(), eventDto.getCategory());
     eventRepository.update(id, event);
   }
 

@@ -22,11 +22,14 @@ public class Event {
 
   private int duration;
 
-  public Event(GeoJsonPoint position, String name, LocalDateTime dateTime, int duration) {
+  private String category;
+
+  public Event(GeoJsonPoint position, String name, LocalDateTime dateTime, int duration, String category) {
     this.position = position;
     this.name = name;
     this.dateTime = dateTime;
     this.duration = duration;
+    this.category = category;
   }
 
   public void updateFrom(Event other) {
@@ -34,6 +37,7 @@ public class Event {
     name = other.name;
     dateTime = other.dateTime;
     duration = other.duration;
+    category = other.category;
   }
 
 }
