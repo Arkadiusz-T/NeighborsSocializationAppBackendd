@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -41,6 +42,7 @@ public class EventRestController {
   }
 
   @PostMapping
+  @PreAuthorize("isAuthenticated()")
   public ResponseEntity<EventId> add(@RequestBody EventDto eventDto) {
     String id = eventApplicationService.add(eventDto);
 
@@ -48,11 +50,13 @@ public class EventRestController {
   }
 
   @PutMapping("/{id}")
+  @PreAuthorize("isAuthenticated()")
   public void update(@PathVariable String id, @RequestBody EventDto eventDto) {
     eventApplicationService.update(id, eventDto);
   }
 
   @DeleteMapping("/{id}")
+  @PreAuthorize("isAuthenticated()")
   public void delete(@PathVariable String id) {
     eventApplicationService.deleteById(id);
   }
