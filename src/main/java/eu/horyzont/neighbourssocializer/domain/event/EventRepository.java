@@ -1,4 +1,4 @@
-package eu.horyzont.neighbourssocializer.domain;
+package eu.horyzont.neighbourssocializer.domain.event;
 
 public interface EventRepository {
 

@@ -13,5 +13,8 @@ public class EventDto {
   private LocalDateTime dateTime;
   private int duration;
   private String category;
+  private int minAge;
+  private int maxAge;
+  private String sex;
 
 }

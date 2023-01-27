@@ -13,15 +13,14 @@ public class EventReadModel {
 
   @Id
   private String id;
-
   private GeoJsonPoint position;
-
   private String name;
-
   private LocalDateTime dateTime;
-
   private int duration;
-
   private String category;
+  private UserReadModel user;
+  private int minAge;
+  private int maxAge;
+  private String sex;
 
 }

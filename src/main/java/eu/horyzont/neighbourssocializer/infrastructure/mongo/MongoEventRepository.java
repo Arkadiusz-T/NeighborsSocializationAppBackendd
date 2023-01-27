@@ -1,7 +1,7 @@
 package eu.horyzont.neighbourssocializer.infrastructure.mongo;
 
-import eu.horyzont.neighbourssocializer.domain.Event;
-import eu.horyzont.neighbourssocializer.domain.EventRepository;
+import eu.horyzont.neighbourssocializer.domain.event.Event;
+import eu.horyzont.neighbourssocializer.domain.event.EventRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
