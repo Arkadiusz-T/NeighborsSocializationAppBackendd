@@ -4,9 +4,12 @@ import eu.horyzont.neighbourssocializer.domain.user.User;
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
+import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+
+import static org.springframework.data.mongodb.core.index.GeoSpatialIndexType.GEO_2DSPHERE;
 
 @Getter
 @Document(collection = "event")
@@ -14,6 +17,7 @@ public class Event {
 
   @Id
   private String id;
+  @GeoSpatialIndexed(type = GEO_2DSPHERE)
   private GeoJsonPoint position;
   private String name;
   private LocalDateTime dateTime;
