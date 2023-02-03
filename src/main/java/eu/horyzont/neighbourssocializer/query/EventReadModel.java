@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Document(collection = "event")
-class EventReadModel {
+public class EventReadModel {
 
   @Id
   private String id;

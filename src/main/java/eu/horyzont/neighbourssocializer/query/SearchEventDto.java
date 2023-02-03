@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 @Getter
 @RequiredArgsConstructor
-class SearchEventDto {
+public class SearchEventDto {
 
   private final double latitude;
   private final double longitude;

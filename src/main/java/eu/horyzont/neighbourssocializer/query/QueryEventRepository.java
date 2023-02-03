@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-class QueryEventRepository {
+public class QueryEventRepository {
 
   private final SpringQueryEventRepository springQueryEventRepository;
 
