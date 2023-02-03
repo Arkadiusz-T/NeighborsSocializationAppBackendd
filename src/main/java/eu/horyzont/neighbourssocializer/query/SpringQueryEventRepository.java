@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface SpringQueryEventRepository extends MongoRepository<EventReadModel, String> {
+interface SpringQueryEventRepository extends MongoRepository<EventReadModel, String> {
 
   List<EventReadModel> findByPositionNearAndDateTimeAfter(GeoJsonPoint location,
                                                           Distance distance,

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class MongoEventRepository implements EventRepository {
+class MongoEventRepository implements EventRepository {
 
   private final SpringMongoEventRepository repository;
 
